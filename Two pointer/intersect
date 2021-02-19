@@ -1,0 +1,26 @@
+import java.util.*;
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public ArrayList<Integer> intersect(final List<Integer> A, final List<Integer> B) {
+        
+        Map<Integer,Integer> m=new HashMap();
+        ArrayList<Integer> output=new ArrayList();
+      
+        for(int i=0;i<A.size();i++){
+            if(m.containsKey(A.get(i))){
+                m.put(A.get(i),m.get(A.get(i))+1);
+            }
+            else{
+                 m.put(A.get(i),1);
+            }
+        }
+        for(int i=0;i<B.size();i++){
+            if(m.containsKey(B.get(i)) && m.get(B.get(i))>0){
+                m.put(B.get(i),m.get(B.get(i))-1);
+                output.add(B.get(i));
+            }
+        }
+        return output;
+        
+    }
+}
